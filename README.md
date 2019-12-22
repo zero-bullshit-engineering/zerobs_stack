@@ -15,7 +15,9 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/zerobs_stack](https://hexdocs.pm/zerobs_stack).
+## Usage
+
+### Feature Flags
+
+Run `mix copy_featureflags_migrations` to add the needed Ecto migrations to your `priv/repo/migrations` folder.
 
