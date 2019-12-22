@@ -38,7 +38,22 @@ defmodule ZerobsStack.Application do
         unit: {:native, :second},
         tags: [:route]
       ),
+      distribution("stacker.repo.query.total_time",
+        buckets: [0.0001, 0.001, 0.01, 0.1, 1],
+        unit: {:native, :second},
+        name: "application_repo_query_total_time"
+      ),
       sum("http.request.payload_size", unit: :byte),
-      last_value("vm.memory.total", unit: :byte)
+      last_value("vm.memory.total", unit: :byte),
+      last_value("vm.total_run_queue_lengths.total"),
+      last_value("vm.total_run_queue_lengths.cpu"),
+      last_value("vm.total_run_queue_lengths.io"),
+      last_value(
+        "phoenix_plug_duration",
+        event_name: [:phoenix, :router_dispatch, :stop],
+        measurement: :duration,
+        unit: {:native, :second},
+        tags: [:plug]
+      )
     ]
 end

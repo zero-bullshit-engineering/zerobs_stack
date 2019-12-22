@@ -12,6 +12,7 @@ defmodule ZerobsStack.AdminPanel do
   )
 
   forward("/feature-flags", to: FunWithFlags.UI.Router, init_opts: [namespace: "feature-flags"])
+  forward("/metrics", to: MetricsPlug)
 
   match _ do
     send_resp(conn, 404, "oops")
