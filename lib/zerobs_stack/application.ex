@@ -11,7 +11,11 @@ defmodule ZerobsStack.Application do
     children = [
       # Starts a worker by calling: ZerobsStack.Worker.start_link(arg)
       # {ZerobsStack.Worker, arg}
-      Plug.Cowboy.child_spec(scheme: :http, plug: ZerobsStack.AdminPanel, options: [port: 4444]),
+      Plug.Cowboy.child_spec(
+        scheme: :http,
+        plug: ZerobsStack.AdminPanel,
+        options: [port: 4444, transport_options: [num_acceptors: 32]]
+      ),
       {TelemetryMetricsPrometheus.Core, [metrics: metrics()]}
     ]
 
