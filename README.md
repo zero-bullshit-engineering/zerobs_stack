@@ -21,3 +21,7 @@ end
 
 Run `mix copy_featureflags_migrations` to add the needed Ecto migrations to your `priv/repo/migrations` folder.
 
+
+## ToDo
+
+- [ ] Write ets exporter for all current tables, exporting memory size and size
