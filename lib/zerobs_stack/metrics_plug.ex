@@ -1,4 +1,4 @@
-defmodule MetricsPlug do
+defmodule ZerobsStack.MetricsPlug do
   import Plug.Conn
 
   def init(_) do
