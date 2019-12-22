@@ -34,7 +34,8 @@ defmodule ZerobsStack.Application do
     do: [
       counter("http.request.count"),
       distribution("phoenix.router_dispatch.stop.duration",
-        buckets: [50, 100, 250, 1000, 2500, 50000],
+        buckets: [0.0001, 0.0005, 0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1, 5],
+        unit: {:native, :second},
         tags: [:route]
       ),
       sum("http.request.payload_size", unit: :byte),
