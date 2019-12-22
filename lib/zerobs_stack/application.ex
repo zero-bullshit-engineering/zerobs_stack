@@ -9,6 +9,7 @@ defmodule ZerobsStack.Application do
     children = [
       # Starts a worker by calling: ZerobsStack.Worker.start_link(arg)
       # {ZerobsStack.Worker, arg}
+      Plug.Cowboy.child_spec(scheme: :http, plug: ZerobsStack.AdminPanel, options: [port: 4000])
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
