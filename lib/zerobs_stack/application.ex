@@ -16,7 +16,8 @@ defmodule ZerobsStack.Application do
         plug: ZerobsStack.AdminPanel,
         options: [port: 4444, transport_options: [num_acceptors: 32]]
       ),
-      {TelemetryMetricsPrometheus.Core, [metrics: metrics()]}
+      {TelemetryMetricsPrometheus.Core, [metrics: metrics()]},
+      {:telemetry_poller, measurements: [{ZerobsStack.ETSMeasurements, :measure_ets, []}]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
@@ -48,6 +49,8 @@ defmodule ZerobsStack.Application do
         name: "application_repo_query_total_time"
       ),
       sum("http.request.payload_size", unit: :byte),
+      last_value("ets.statistics.size", tags: [:name]),
+      last_value("ets.statistics.memory", tags: [:name]),
       last_value("vm.memory.total", unit: :byte),
       last_value("vm.total_run_queue_lengths.total"),
       last_value("vm.total_run_queue_lengths.cpu"),
