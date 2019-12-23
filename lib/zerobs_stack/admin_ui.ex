@@ -1,6 +1,7 @@
 defmodule ZerobsStack.AdminPanel do
   use Plug.Router
 
+  plug(ZerobsStack.RateLimitPlug)
   plug(:match)
   plug(:dispatch)
   # TODO: read those from  the host app, generate them with install task

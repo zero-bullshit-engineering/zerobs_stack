@@ -16,6 +16,7 @@ defmodule ZerobsStack.Application do
         plug: ZerobsStack.AdminPanel,
         options: [port: 4444, transport_options: [num_acceptors: 32]]
       ),
+      #      ExRated.child_spec([{:timeout, 60_000}]),
       {TelemetryMetricsPrometheus.Core, [metrics: metrics()]},
       {:telemetry_poller, measurements: [{ZerobsStack.ETSMeasurements, :measure_ets, []}]}
     ]

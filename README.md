@@ -1,6 +1,16 @@
 # ZerobsStack
+The 0BS stack is a starting point for building Elixir and Phoenix applications, presented as an Elixir metapackage. It includes the following features:
 
-**TODO: Add description**
+- Featureflags (via fun_with_flags)
+- Prometheus metrics (via telemetry)
+- HTTP Client (Using Tesla with included telemetry reporting)
+- Featureflags UI and Prometheus metrics on own port for easier securing
+- Load shedding via feature flags per controller action ("Drop 50% of all requests to PageController#index")
+
+### Planned features
+
+- MQTT subscriber (with instrumentation)
+- Rate limiting per route/user
 
 ## Installation
 
@@ -20,4 +30,3 @@ end
 ### Feature Flags
 
 Run `mix copy_featureflags_migrations` to add the needed Ecto migrations to your `priv/repo/migrations` folder.
-
