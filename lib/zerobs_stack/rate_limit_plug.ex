@@ -1,5 +1,10 @@
 defmodule ZerobsStack.RateLimitPlug do
-  defstruct name: nil, limit_times: 10, limit_seconds: 60, identifier: nil
+  defstruct name: nil,
+            limit_times: 10,
+            limit_seconds: 60,
+            identifier: nil,
+            error_controller: ZerobsStack.ErrorController
+
   import Plug.Conn
   require Logger
 
@@ -26,7 +31,9 @@ defmodule ZerobsStack.RateLimitPlug do
 
       {:error, _} ->
         :telemetry.execute([:zerobs, :ratelimit, :occured], %{value: 1}, %{key: opts.name})
-        conn |> send_resp(503, "Rate limit reached") |> halt
+
+        apply(opts.error_controller, :call, [conn, {:error, :rate_limit_reached}])
+        |> halt
     end
   end
 end
