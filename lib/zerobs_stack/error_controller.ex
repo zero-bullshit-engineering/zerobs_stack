@@ -3,7 +3,7 @@ defmodule ZerobsStack.ErrorController do
 
   def call(conn, {:error, :rate_limit_reached}) do
     conn
-    |> send_resp(503, "rate limit reached")
+    |> send_resp(429, "Your request has been ratelimited.")
   end
 
   def call(conn, {:error, :load_shedding}) do
