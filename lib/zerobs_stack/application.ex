@@ -40,6 +40,8 @@ defmodule ZerobsStack.Application do
     do: [
       counter("zerobs.loadshed.occured.value", tags: [:key]),
       counter("zerobs.loadshed.skipped.value", tags: [:key]),
+      counter("zerobs.ratelimit.occured.value", tags: [:key]),
+      counter("zerobs.ratelimit.skipped.value", tags: [:key]),
       counter("tesla.request.request_time"),
       counter("http.request.count"),
       distribution("phoenix.router_dispatch.stop.duration",
