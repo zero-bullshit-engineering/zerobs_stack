@@ -1,11 +1,6 @@
 defmodule ZerobsStack.AdminPanel do
   use Plug.Router
 
-  plug(ZerobsStack.RateLimitPlug, %ZerobsStack.RateLimitPlug{
-    name: "admin",
-    identifier: [:remote_ip]
-  })
-
   plug(:match)
   plug(:dispatch)
   # TODO: read those from  the host app, generate them with install task
