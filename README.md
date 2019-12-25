@@ -30,3 +30,8 @@ end
 ### Feature Flags
 
 Run `mix copy_featureflags_migrations` to add the needed Ecto migrations to your `priv/repo/migrations` folder.
+
+
+### Load shedding
+
+Add `plug ZerobsSTack.LoadShedPlug` to the end of the `def controller do` block in your `ApplicationWeb` module. 
