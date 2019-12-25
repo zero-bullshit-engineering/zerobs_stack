@@ -35,3 +35,5 @@ Run `mix copy_featureflags_migrations` to add the needed Ecto migrations to your
 ### Load shedding
 
 Add `plug ZerobsSTack.LoadShedPlug` to the end of the `def controller do` block in your `ApplicationWeb` module. 
+
+To enable load shedding open your FunWithFlags GUI and add a flag named like `elixir_stackerweb_pagecontroller_index_disabled`. This would drop Traffic for `Elixir.StackerWeb.PageController#index` (We downcase the whole module name and replace `.` with `_`.
