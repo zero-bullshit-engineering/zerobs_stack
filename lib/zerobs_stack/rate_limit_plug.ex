@@ -25,7 +25,7 @@ defmodule ZerobsStack.RateLimitPlug do
         conn
 
       {:error, _} ->
-        :telemetry.execute([:zerobs, :ratelimit, :executed], %{value: 1}, %{key: opts.name})
+        :telemetry.execute([:zerobs, :ratelimit, :occured], %{value: 1}, %{key: opts.name})
         conn |> send_resp(503, "Rate limit reached") |> halt
     end
   end
