@@ -14,7 +14,7 @@ The 0BS stack is a starting point for building Elixir and Phoenix applications, 
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
+The package can be installed
 by adding `zerobs_stack` to your list of dependencies in `mix.exs`:
 
 ```elixir
