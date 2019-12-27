@@ -1,4 +1,8 @@
 defmodule ZerobsStack.ReadinessPlug do
+  @doc """
+  This allows for automatic kubernetes healthchecks via a list of configured {Module, Function, Arguments}  tuples.
+  All configured MFAs are executed and checked against the `{:ok, _}` tuple. If any of the check fails the Plug returns HTTP 500.
+  """
   import Plug.Conn
   require Logger
 
