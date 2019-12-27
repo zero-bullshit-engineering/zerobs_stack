@@ -13,7 +13,7 @@ defmodule ZerobsStack.Application do
       # {ZerobsStack.Worker, arg}
       Plug.Cowboy.child_spec(
         scheme: :http,
-        plug: ZerobsStack.AdminPanel,
+        plug: ZerobsStack.AdminUI,
         options: [port: 4444, transport_options: [num_acceptors: 32]]
       ),
       #      ExRated.child_spec([{:timeout, 60_000}]),

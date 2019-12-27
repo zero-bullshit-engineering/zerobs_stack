@@ -1,4 +1,4 @@
-defmodule ZerobsStack.AdminPanel do
+defmodule ZerobsStack.AdminUI do
   use Plug.Router
 
   plug(:match)
