@@ -1,4 +1,17 @@
 defmodule ZerobsStack.RateLimitPlug do
+  @moduledoc """
+  This plug allows for rate limiting HTTP calls to your application. It can be used in your controllers or the routing pipeline to e.g. rate limit per-IP traffic across your whole application and further restrict specific routes (e.g. login/password reset) further. A key to rate limit on can be chosen dynamically from the conn to allow for flexible limits. 
+
+  ```
+  plug ZerobsStack.RateLimitPlug, %ZerobsStack.RateLimitPlug{
+    name: "PageController",
+    identifier: [:private, :phoenix_format]
+  }
+  ```
+
+  This sample show the usage in an exemplary PageController. The plug rate limits on 10 requests/60 seconds (default) and chooses the `private/phoenix_format` key from the conn. As with `ZerobsStack.LoadShedPlug` an `error_controller` key can be passed. This plug calls `MyErrorController.call(conn, {:error, :rate_limit_reached})` so you can render a custom response.
+  """
+
   defstruct name: nil,
             limit_times: 10,
             limit_seconds: 60,
